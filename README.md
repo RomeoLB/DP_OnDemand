@@ -5,13 +5,13 @@ The exported BA:Connected (BACon) presentation, available in this repo, allows t
 <img width="620" alt="image" src="https://github.com/RomeoLB/DP_OnDemand/assets/136584791/5ea59564-2ae7-4ca4-951e-30016c7731a5">
 
 
-as the content source for an On Demand state in BA:Connected.
+as the content source for an "On Demand" state in BA:Connected.
 
 <img width="735" alt="image" src="https://github.com/RomeoLB/DP_OnDemand/assets/136584791/2fc4fbfd-619f-46db-8658-d17b63d309ca">
 
 
 
-The On Demand state allows to playback a file stored in that state using a UDP message which correspond to the key derived from the title value assigned to it in the "On-Demand-Feed". 
+The "On Demand" state allows to playback a file stored in that state using a UDP message which correspond to the key derived from the title value assigned to it in the "On-Demand-Feed". 
 
 <img width="606" alt="image" src="https://github.com/RomeoLB/DP_OnDemand/assets/136584791/8c0dbc43-2e99-4c53-a215-b920e37a0ece">
 
