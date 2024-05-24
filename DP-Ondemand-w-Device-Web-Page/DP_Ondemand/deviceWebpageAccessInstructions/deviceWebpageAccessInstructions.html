@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device Web Page Video Selector</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: blueviolet;
+        }
+
+        #header {
+            text-align: center;
+            font-size: 75px;
+            margin-bottom: 50px; 
+        }
+
+        #subheader {
+            text-align: center;
+            font-size: 60px;
+            margin-bottom: 50px;
+        }
+
+        #info {
+            text-align: center;
+            font-size: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">Device Web Page Video Selector</div>
+    <div id="subheader">Access device Web Page via a web browser on port :8008</div>
+    <div id="info">Device web page URL: </div>
+</body>
+<script>
+    console.log("RLB App version 0.5")
+
+    const path = require('path');
+
+    const diClass = require('@brightsign/deviceinfo');
+
+    var networkConfigClass = require("@brightsign/networkconfiguration");
+    var nc = new networkConfigClass("eth0");
+
+    var NetworkStatus = require("@brightsign/networkstatus");
+    var networkStatus = new NetworkStatus();
+
+    const di = new diClass();
+    let SN = di.serialNumber;
+    let model = di.model;
+    let OSversion = di.osVersion;
+
+    console.log(SN);
+    console.log(model);
+    console.log(OSversion);
+
+    networkStatus.getInterfaceStatus("eth0").then(
+        function(data) {
+            console.log("***General Interface Data***");
+            console.log(JSON.stringify(data));
+            console.log(data);
+            console.log("player IP Address: ",data.ipAddressList[0].address)
+            let deviceWebPageInfo = "Device Web Page URL:  http://" + data.ipAddressList[0].address + ":8008"
+            console.log(deviceWebPageInfo)
+            document.getElementById("info").textContent = deviceWebPageInfo;
+        })
+    .catch(
+        function(data) {
+            console.log(JSON.stringify(data));
+    });
+
+</script>
+</html>
